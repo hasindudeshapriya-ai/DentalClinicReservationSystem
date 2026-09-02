@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dental Clinic - Dashboard</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+<body>
+
+
+<div class="sidebar">
+
+    <h2>🦷 Dental Clinic</h2>
+
+    <a href="dashboard.html" class="active">🏠 Dashboard</a>
+    <a href="patients.html">👤 Patients</a>
+    <a href="LoadPatientsServlet">📅 Appointments</a>
+    <a href="dentists.html">🦷 Dentists</a>
+    <a href="billing.html">💳 Billing</a>
+    <a href="report.html">📊 Reports</a>
+    <a
+    id="userManagementLink"
+    href="user-management.html">
+    👥 User Management
+</a>
+    <a href="index.html">🚪 Logout</a>
+
+</div>
+
+
+<div class="main">
+
+    <div class="topbar">
+        <div>
+            <h1>Dashboard</h1>
+            <p>Welcome back! Here's an overview of your dental clinic.</p>
+        </div>
+
+        <div class="welcome-admin">
+            <span class="admin-avatar">A</span>
+            <div>
+                <strong>Admin</strong>
+                <small>Administrator</small>
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="cards">
+
+        <div class="card patient-card">
+            <div class="card-icon">👤</div>
+            <div class="card-content">
+                <span>Total Patients</span>
+                <h2>0</h2>
+                <p>Registered patients</p>
+            </div>
+        </div>
+
+        <div class="card appointment-card">
+            <div class="card-icon">📅</div>
+            <div class="card-content">
+                <span>Appointments</span>
+                <h2>0</h2>
+                <p>Scheduled appointments</p>
+            </div>
+        </div>
+
+        <div class="card dentist-card">
+            <div class="card-icon">🦷</div>
+            <div class="card-content">
+                <span>Dentists</span>
+                <h2>3</h2>
+                <p>Registered dentists</p>
+            </div>
+        </div>
+
+        <div class="card revenue-card">
+            <div class="card-icon">💰</div>
+            <div class="card-content">
+                <span>Total Revenue</span>
+                <h2>Rs. 0.00</h2>
+                <p>Clinic revenue</p>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="dashboard-grid">
+
+       
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Quick Actions</h2>
+                    <p>Frequently used clinic functions</p>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+
+                <a href="patients.html" class="quick-action">
+                    <span class="quick-icon">👤</span>
+                    <div>
+                        <strong>Manage Patients</strong>
+                        <small>View and manage patient records</small>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="appointment.html" class="quick-action">
+                    <span class="quick-icon">📅</span>
+                    <div>
+                        <strong>Book Appointment</strong>
+                        <small>Create a new clinic appointment</small>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="billing.html" class="quick-action">
+                    <span class="quick-icon">💳</span>
+                    <div>
+                        <strong>Manage Billing</strong>
+                        <small>View patient bills and payments</small>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+                <a href="report.html" class="quick-action">
+                    <span class="quick-icon">📊</span>
+                    <div>
+                        <strong>View Reports</strong>
+                        <small>View clinic reports and revenue</small>
+                    </div>
+                    <span class="arrow">→</span>
+                </a>
+
+            </div>
+        </div>
+
+        <div class="dashboard-panel">
+            <div class="panel-header">
+                <div>
+                    <h2>Today's Appointments</h2>
+                    <p>Appointment overview</p>
+                </div>
+
+                <a href="appointment.html" class="view-link">View All</a>
+            </div>
+
+            <div class="appointment-summary">
+                <div class="appointment-stat scheduled">
+                    <span>Scheduled</span>
+                    <strong>0</strong>
+                </div>
+
+                <div class="appointment-stat completed">
+                    <span>Completed</span>
+                    <strong>0</strong>
+                </div>
+
+                <div class="appointment-stat cancelled">
+                    <span>Cancelled</span>
+                    <strong>0</strong>
+                </div>
+            </div>
+
+            <div class="empty-message">
+                <div>📅</div>
+                <strong>No appointments today</strong>
+                <p>There are currently no appointments scheduled for today.</p>
+            </div>
+        </div>
+
+    </div>
+
+ 
+    <div class="dashboard-panel overview-panel">
+
+        <div class="panel-header">
+            <div>
+                <h2>Clinic Overview</h2>
+                <p>Quick summary of the reservation system</p>
+            </div>
+        </div>
+
+        <div class="overview-grid">
+
+            <div class="overview-item">
+                <span class="overview-number">0</span>
+                <span>Pending Appointments</span>
+            </div>
+
+            <div class="overview-item">
+                <span class="overview-number">0</span>
+                <span>Completed Appointments</span>
+            </div>
+
+            <div class="overview-item">
+                <span class="overview-number">0</span>
+                <span>Outstanding Bills</span>
+            </div>
+
+            <div class="overview-item">
+                <span class="overview-number">3</span>
+                <span>Active Dentists</span>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
