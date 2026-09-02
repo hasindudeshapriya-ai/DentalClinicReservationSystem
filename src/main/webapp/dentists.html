@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+
+    <meta charset="UTF-8">
+
+    <title>Dentist Management</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/patients.css">
+
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+    <body>
+        <div class="sidebar">
+
+        <h2>🦷 Dental Clinic</h2>
+
+        <a href="dashboard.html">🏠 Dashboard</a>
+
+        <a href="patients.html">👤 Patients</a>
+
+        <a href="LoadPatientsServlet">📅 Appointments</a>
+
+        <a href="dentists.html" class="active">
+            🦷 Dentists
+        </a>
+
+        <a href="BillingServlet">💳 Billing</a>
+
+        <a href="report.html">📊 Reports</a>
+
+        <a href="#">👥 User Management</a>
+
+        <a href="index.html">🚪 Logout</a>
+
+    </div>
+
+
+   
+    <div class="main">
+
+        <div class="topbar">
+
+            <h1>Dentist Management</h1>
+
+            <h3>Add New Dentist</h3>
+
+        </div>
+
+
+       
+        <div class="top-buttons">
+
+            <a href="ViewDentistsServlet" class="view-btn">
+                📋 View All Dentists
+            </a>
+
+        </div>
+
+
+       
+        <div class="form-container">
+
+            <form action="AddDentistServlet" method="post">
+
+                
+                <div class="row">
+
+                    <div class="input-group">
+
+                        <label>Dentist Name</label>
+
+                        <input type="text"
+                               name="dentistName"
+                               placeholder="Enter dentist name"
+                               required>
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Specialization</label>
+
+                        <input type="text"
+                               name="specialization"
+                               placeholder="Enter specialization"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                
+                <div class="row">
+
+                    <div class="input-group">
+    <label for="phone">Phone Number</label>
+
+    <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="Enter 10 digit phone number"
+        maxlength="10"
+        inputmode="numeric"
+        autocomplete="tel"
+        required>
+
+    <small class="field-error" id="phoneError"></small>
+</div>
+
+
+                    <div class="input-group">
+
+                        <label>Email</label>
+
+                        <input type="email"
+                               name="email"
+                               placeholder="Enter email address"
+                               required>
+
+                    </div>
+
+                </div>
+
+
+                
+                <div class="button-group">
+
+                    <button type="submit" class="save-btn">
+                        Add Dentist
+                    </button>
+
+                    <button type="reset" class="clear-btn">
+                        Clear
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+        
+        <script src="js/Dentist.js"></script>
+        <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>
