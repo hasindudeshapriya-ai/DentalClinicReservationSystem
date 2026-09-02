@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Management</title>
+
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/patients.css">
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+
+<body>
+
+    
+    <div class="sidebar">
+
+        <h2>🦷 Dental Clinic</h2>
+
+        <a href="dashboard.html">🏠 Dashboard</a>
+        <a href="patients.html" class="active">👤 Patients</a>
+        <a href="LoadPatientsServlet">📅 Appointments</a>
+        <a href="dentists.html">🦷 Dentists</a>
+        <a href="BillingServlet">💳 Billing</a>
+        <a href="report.html">📊 Reports</a>
+        <a href="#">👥 User Management</a>
+        <a href="index.html">🚪 Logout</a>
+
+    </div>
+
+    
+    <div class="main">
+
+        <div class="topbar">
+            <h1>Patient Management</h1>
+            <h3>Register New Patient</h3>
+        </div>
+        
+        <div class="top-buttons">
+    <a href="ViewPatientsServlet" class="view-btn">📋 View All Patients</a>
+</div>
+
+        
+        <div class="form-container">
+
+            <form action="PatientServlet" method="post">
+
+                <div class="row">
+
+                    <div class="input-group">
+                        <label>First Name</label>
+                        <input type="text" name="firstName" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label>Last Name</label>
+                        <input type="text" name="lastName" required>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group">
+                        <label>Gender</label>
+
+                        <select name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+                        <label>Date of Birth</label>
+                        <input type="date" name="dob" required>
+                    </div>
+
+                </div>
+
+                <div class="row">
+
+                    <div class="input-group">
+    <label for="phone">Phone Number</label>
+
+    <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="Enter 10 digit phone number"
+        maxlength="10"
+        inputmode="numeric"
+        autocomplete="tel"
+        required>
+
+    <small class="field-error" id="phoneError"></small>
+</div>
+                    <div class="input-group">
+                        <label>Email</label>
+                        <input type="email" name="email">
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label>Address</label>
+
+                    <textarea
+                        name="address"
+                        rows="4"
+                        placeholder="Enter patient address"></textarea>
+
+                </div>
+
+                <div class="button-group">
+
+                    <button type="submit" class="save-btn">
+                        Register Patient
+                    </button>
+
+                    <button type="reset" class="clear-btn">
+                        Clear
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+    <script src="js/Patient.js"></script>
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>
