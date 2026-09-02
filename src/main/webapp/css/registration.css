@@ -1,0 +1,299 @@
+
+* { box-sizing: border-box; }
+
+html, body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    padding: 30px 20px;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.registration-box {
+    width: 650px;
+    max-width: 100%;
+    padding: 32px 38px 26px;
+    background: rgba(255,255,255,.97);
+    border: 1px solid rgba(255,255,255,.9);
+    border-radius: 22px;
+    box-shadow: 0 25px 60px rgba(24,74,112,.16),
+                0 6px 20px rgba(24,74,112,.08);
+    backdrop-filter: blur(12px);
+    animation: registrationCardAnimation .6s ease-out;
+}
+
+.registration-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 17px;
+    background: linear-gradient(135deg,#0077b6,#00a6d6);
+    color: white;
+    font-size: 27px;
+    font-weight: bold;
+    box-shadow: 0 10px 25px rgba(0,119,182,.25);
+}
+
+.registration-box h1 {
+    margin: 0 0 5px;
+    text-align: center;
+    color: #006da8;
+    font-size: 28px;
+    line-height: 1.2;
+    font-weight: 750;
+    letter-spacing: -.5px;
+}
+
+.registration-box h3 {
+    margin: 0 0 20px;
+    text-align: center;
+    color: #64748b;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.form-group { margin-bottom: 13px; }
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    display: block;
+    width: 100%;
+    height: 46px;
+    padding: 0 13px;
+    border: 1px solid #d5dee7;
+    border-radius: 10px;
+    outline: none;
+    background: #f8fbfd;
+    color: #1e293b;
+    font-family: inherit;
+    font-size: 14px;
+    transition: border-color .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.form-group input::placeholder { color: #94a3b8; }
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #a8c5d8;
+    background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #008dcc;
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(0,141,204,.12);
+}
+
+.form-group input.input-invalid,
+.form-group select.input-invalid {
+    border-color: #dc3545;
+    background: #fff8f8;
+}
+
+.field-error {
+    display: block;
+    min-height: 15px;
+    margin-top: 3px;
+    color: #dc3545;
+    font-size: 11px;
+}
+
+.hint {
+    margin-top: 3px;
+    color: #64748b;
+    font-size: 11px;
+}
+
+#dentistFields { display: none; }
+
+.registration-box form {
+    width: 100%;
+}
+
+.register-btn {
+    width: 100%;
+    height: 48px;
+    margin-top: 3px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg,#0077b6,#008dcc);
+    color: #fff;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .2px;
+    box-shadow: 0 8px 18px rgba(0,119,182,.22);
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.register-btn:hover {
+    background: linear-gradient(135deg,#00659c,#007fb8);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(0,119,182,.28);
+}
+
+.register-btn:active { transform: translateY(0); }
+
+.message {
+    display: none;
+    margin-bottom: 12px;
+    padding: 9px 12px;
+    border-radius: 9px;
+    font-size: 13px;
+}
+
+.message.error {
+    display: block;
+    background: #ffebee;
+    color: #b71c1c;
+}
+
+.message.success {
+    display: block;
+    background: #e8f5e9;
+    color: #1b5e20;
+}
+
+.login-link {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid #e6edf3;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.login-link a {
+    color: #0077b6;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    color: #005f8c;
+    text-decoration: underline;
+}
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,.48);
+    z-index: 9999;
+}
+
+.modal-overlay.show { display: flex; }
+
+.success-modal,
+.error-modal {
+    width: 390px;
+    max-width: calc(100% - 32px);
+    background: #fff;
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 15px 45px rgba(0,0,0,.22);
+    animation: popup .22s ease-out;
+}
+
+.success-icon,
+.error-icon {
+    width: 62px;
+    height: 62px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 34px;
+    font-weight: 700;
+}
+
+.success-icon { background: #198754; }
+.error-icon { background: #dc3545; }
+
+.success-modal h2 { color: #198754; margin: 8px 0; }
+.error-modal h2 { color: #dc3545; margin: 8px 0; }
+
+.success-modal p,
+.error-modal p {
+    color: #555;
+    line-height: 1.5;
+}
+
+.success-modal small { color: #777; }
+
+.error-modal button {
+    margin-top: 12px;
+    border: 0;
+    border-radius: 7px;
+    padding: 10px 25px;
+    background: #0077b6;
+    color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+@keyframes registrationCardAnimation {
+    from { opacity: 0; transform: translateY(20px) scale(.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes popup {
+    from { opacity: 0; transform: scale(.92); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 20px 15px;
+        align-items: flex-start;
+    }
+
+    .registration-box {
+        width: 100%;
+        margin: 10px 0;
+        padding: 28px 22px 24px;
+        border-radius: 18px;
+    }
+
+    .registration-box h1 { font-size: 25px; }
+}
+
+@media (max-width: 420px) {
+    .registration-box { padding: 25px 17px 22px; }
+    .registration-box h1 { font-size: 22px; }
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration - Dental Clinic</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+<body>
+<div class="registration-container">
+    <div class="registration-box">
+        <div class="registration-icon">✚</div>
+        <h1>Sunrise Dental Clinic</h1>
+        <h3>Reservation System</h3>
+
+    <div id="message" class="message" role="alert"></div>
+
+    <form action="RegisterUserServlet" method="post" id="registrationForm" novalidate>
+
+        <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName"
+                   placeholder="Enter full name" autocomplete="name">
+            <small class="field-error" id="fullNameError"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username"
+                   placeholder="Choose a username" autocomplete="username">
+            <small class="field-error" id="usernameError"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter email address" autocomplete="email">
+            <small class="field-error" id="emailError"></small>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password"
+                   placeholder="Create a password" autocomplete="new-password">
+            <small class="field-error" id="passwordError"></small>
+            <div class="hint">Minimum 6 characters.</div>
+        </div>
+
+        <div class="form-group">
+            <label for="role">Role</label>
+            <select id="role" name="role">
+                <option value="">-- Select Role --</option>
+                <option value="DENTIST">Dentist</option>
+                <option value="CASHIER">Cashier</option>
+            </select>
+            <small class="field-error" id="roleError"></small>
+            <div class="hint">Admin accounts are created by an existing administrator from User Management.</div>
+        </div>
+
+        <div id="dentistFields">
+            <div class="form-group">
+                <label for="specialization">Specialization</label>
+                <input type="text" id="specialization" name="specialization"
+                       placeholder="e.g. General Dentistry">
+                <small class="field-error" id="specializationError"></small>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone"
+                   placeholder="Enter 10 digit phone number"
+                   inputmode="numeric"
+                   autocomplete="tel"
+                   maxlength="10"
+                   required>
+            <small class="field-error" id="phoneError"></small>
+            <div class="hint">Enter exactly 10 digits (numbers only).</div>
+        </div>
+
+        <button type="submit" class="register-btn">Register User</button>
+    </form>
+
+    <div class="login-link">
+        Already have an account? <a href="Login.html">Login</a>
+    </div>
+    </div>
+</div>
+
+<div id="successModal" class="modal-overlay" aria-hidden="true">
+    <div class="success-modal" role="dialog" aria-modal="true">
+        <div class="success-icon">✓</div>
+        <h2>Registration Successful!</h2>
+        <p>Your account has been created successfully.</p>
+        <small>Redirecting to Login...</small>
+    </div>
+</div>
+
+<div id="errorModal" class="modal-overlay" aria-hidden="true">
+    <div class="error-modal" role="dialog" aria-modal="true">
+        <div class="error-icon">!</div>
+        <h2>Registration Failed</h2>
+        <p id="errorModalText">Please check your details and try again.</p>
+        <button type="button" id="errorModalClose">OK</button>
+    </div>
+</div>
+
+<script src="js/registration.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>
