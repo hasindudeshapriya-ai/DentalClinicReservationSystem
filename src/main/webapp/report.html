@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports - Sunrise Dental Clinic</title>
+
+    <link rel="stylesheet" href="css/report.css">
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+
+<body>
+
+<div class="report-page">
+
+
+<div class="sidebar">
+
+    <h2>🦷 Dental Clinic</h2>
+
+    <a href="dashboard.html">
+        🏠 Dashboard
+    </a>
+
+    <a href="patients.html">
+        👤 Patients
+    </a>
+
+    <a href="LoadPatientsServlet">
+        📅 Appointments
+    </a>
+
+    <a href="dentists.html">
+        🦷 Dentists
+    </a>
+
+    <a href="BillingServlet">
+        💳 Billing
+    </a>
+
+    <a href="report.html" class="active">
+        📊 Reports
+    </a>
+
+    <a href="user-management.html">
+        👥 User Management
+    </a>
+
+    <a href="index.html">
+        🚪 Logout
+    </a>
+
+</div>
+
+    <main class="report-content">
+
+        <div class="report-header">
+
+            <div>
+                <h1>Reports</h1>
+
+                <p>
+                    View clinic appointments, billing and revenue
+                    information.
+                </p>
+            </div>
+
+            <div class="header-actions">
+
+                <button
+                    type="button"
+                    class="btn-refresh"
+                    onclick="loadReports()">
+                    ↻ Refresh
+                </button>
+
+                <button
+                    type="button"
+                    class="btn-print"
+                    onclick="window.print()">
+                    🖨 Print
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <section class="summary-grid">
+
+            <!-- Appointments -->
+            <div class="summary-card">
+
+                <div class="summary-icon appointment-icon">
+                    📅
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Total Appointments</span>
+
+                    <strong id="totalAppointments">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            
+            <div class="summary-card">
+
+                <div class="summary-icon patient-icon">
+                    👤
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Total Patients</span>
+
+                    <strong id="totalPatients">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            
+            <div class="summary-card">
+
+                <div class="summary-icon revenue-icon">
+                    💰
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Total Revenue</span>
+
+                    <strong id="totalRevenue">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+    
+            <div class="summary-card">
+
+                <div class="summary-icon balance-icon">
+                    💳
+                </div>
+
+                <div class="summary-info">
+
+                    <span>Outstanding Balance</span>
+
+                    <strong id="outstandingBalance">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <section class="report-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Appointment Summary</h2>
+
+                    <p>
+                        Appointment status overview
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="appointment-summary">
+
+                <div class="status-box completed">
+
+                    <span class="status-label">
+                        Completed
+                    </span>
+
+                    <strong id="completedAppointments">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box pending">
+
+                    <span class="status-label">
+                        Pending
+                    </span>
+
+                    <strong id="pendingAppointments">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="status-box cancelled">
+
+                    <span class="status-label">
+                        Cancelled
+                    </span>
+
+                    <strong id="cancelledAppointments">
+                        0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+      
+
+        <section class="report-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Billing Summary</h2>
+
+                    <p>
+                        Financial summary of clinic bills
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="financial-grid">
+
+                <div class="financial-item">
+
+                    <span>Total Treatment Charges</span>
+
+                    <strong id="totalTreatmentCharges">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="financial-item">
+
+                    <span>Total Discounts</span>
+
+                    <strong id="totalDiscounts">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="financial-item">
+
+                    <span>Total Bill Amount</span>
+
+                    <strong id="totalBillAmount">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="financial-item">
+
+                    <span>Total Paid</span>
+
+                    <strong id="totalPaid">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+
+                <div class="financial-item">
+
+                    <span>Outstanding Balance</span>
+
+                    <strong id="reportBalance">
+                        Rs. 0.00
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+     
+        <section class="report-card">
+
+            <div class="card-header">
+
+                <div>
+                    <h2>Recent Billing</h2>
+
+                    <p>
+                        Latest billing records
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table class="report-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Bill ID</th>
+
+                            <th>Patient</th>
+
+                            <th>Dentist</th>
+
+                            <th>Total</th>
+
+                            <th>Paid</th>
+
+                            <th>Balance</th>
+
+                            <th>Status</th>
+
+                            <th>Date</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="recentBillingBody">
+
+                        <tr>
+
+                            <td colspan="8"
+                                class="loading-row">
+
+                                Loading report data...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="js/report.js"></script>
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>
