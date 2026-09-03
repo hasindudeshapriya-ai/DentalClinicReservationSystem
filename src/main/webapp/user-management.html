@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Management - Dental Clinic</title>
+
+    <link rel="stylesheet" href="css/user-management.css">
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+
+<body>
+
+    
+    <aside class="sidebar">
+
+        <div class="clinic-logo">
+            <h2>🦷 Dental Clinic</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="dashboard.html">
+                <span>🏠</span>
+                Dashboard
+            </a>
+
+            <a href="LoadPatientsServlet">
+                <span>👤</span>
+                Patients
+            </a>
+
+            <a href="appointments.html">
+                <span>📅</span>
+                Appointments
+            </a>
+
+            <a href="dentists.html">
+                <span>🦷</span>
+                Dentists
+            </a>
+
+            <a href="billing.html">
+                <span>💳</span>
+                Billing
+            </a>
+
+            <a href="report.html">
+                <span>📊</span>
+                Reports
+            </a>
+
+            <a href="user-management.html" class="active">
+                <span>👥</span>
+                User Management
+            </a>
+
+            <a href="Login.html" class="logout-link">
+                <span>🚪</span>
+                Logout
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    
+    <main class="main-content">
+
+       
+        <header class="page-header">
+
+            <div>
+                <h1>User Management</h1>
+
+                <p>
+                    Manage system users and access permissions
+                </p>
+            </div>
+
+            <button type="button" id="addUserButton" class="btn-primary">
+                + Add User
+            </button>
+
+        </header>
+
+
+       
+        <section class="filter-card">
+
+            <div class="search-box">
+
+                <label for="searchUser">
+                    Search Users
+                </label>
+
+                <input
+                    type="text"
+                    id="searchUser"
+                    placeholder="Search by username, name or email...">
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <label for="roleFilter">
+                    Role
+                </label>
+
+                <select id="roleFilter">
+
+                    <option value="all">
+                        All Roles
+                    </option>
+
+                    <option value="Admin">
+                        Admin
+                    </option>
+
+                    <option value="Dentist">
+                        Dentist
+                    </option>
+
+                    <option value="Cashier">
+                        Cashier
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="filter-box">
+
+                <label for="statusFilter">
+                    Status
+                </label>
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+        </section>
+
+
+        
+        <section class="table-card">
+
+            <div class="table-header">
+
+                <div>
+                    <h2>System Users</h2>
+
+                    <p>
+                        Manage registered clinic users
+                    </p>
+                </div>
+
+                <span
+                    id="userCount"
+                    class="user-count">
+
+                    0 Users
+
+                </span>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table id="usersTable">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>User ID</th>
+
+                            <th>Username</th>
+
+                            <th>Full Name</th>
+
+                            <th>Email</th>
+
+                            <th>Role</th>
+
+                            <th>Status</th>
+
+                            <th>Created Date</th>
+
+                            <th>Action</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="usersTableBody">
+
+                       
+
+                        <tr id="loadingRow">
+
+                            <td
+                                colspan="8"
+                                class="loading-message">
+
+                                Loading users...
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+    
+    <div id="userModal" class="modal-overlay">
+
+    <div class="user-modal">
+
+        <div class="modal-header">
+            <div>
+                <h2 id="modalTitle">Add User</h2>
+                <p>Create a new clinic system user</p>
+            </div>
+
+            <button type="button" class="modal-close" id="closeModalBtn">
+                &times;
+            </button>
+        </div>
+
+        <form id="userForm">
+
+            <input type="hidden" id="userId">
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="username">Username</label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        placeholder="Enter username"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+
+                    <input
+                        type="text"
+                        id="fullName"
+                        placeholder="Enter full name"
+                        required
+                    >
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter email"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Role</label>
+
+                    <select id="role" required>
+
+                        <option value="">
+                            Select role
+                        </option>
+
+                        <option value="ADMIN">
+                            Admin
+                        </option>
+
+                        <option value="DENTIST">
+                            Dentist
+                        </option>
+
+                        <option value="CASHIER">
+                            Cashier
+                        </option>
+
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter password"
+                    >
+
+                    <small id="passwordHelp">
+                        Required when creating a user.
+                    </small>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="status">
+                        Status
+                    </label>
+
+                    <select id="status">
+
+                        <option value="ACTIVE">
+                            Active
+                        </option>
+
+                        <option value="INACTIVE">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div id="formMessage" class="form-message"></div>
+
+            <div class="modal-actions">
+
+                <button
+                    type="button"
+                    class="btn-cancel"
+                    onclick="closeUserModal()">
+                    Cancel
+                </button>
+
+                <button
+                    type="submit"
+                    class="btn-save">
+                    Save User
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+    <script src="js/user-management.js"></script>
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>
