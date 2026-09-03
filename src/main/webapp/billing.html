@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Management - Dental Clinic</title>
+    <link rel="stylesheet" href="css/billing.css">
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+<body>
+<div class="billing-page">
+    <aside class="sidebar">
+        <h2>🦷 Dental Clinic</h2>
+        <a href="dashboard.html">🏠 Dashboard</a>
+        <a href="patients.html">👤 Patients</a>
+        <a href="LoadPatientsServlet">📅 Appointments</a>
+        <a href="dentists.html">🦷 Dentists</a>
+        <a href="billing.html" class="active">💳 Billing</a>
+        <a href="report.html">📊 Reports</a>
+        <a id="userManagementLink" href="user-management.html">👥 User Management</a>
+        <a href="index.html">🚪 Logout</a>
+    </aside>
+
+    <main class="billing-content">
+        <header class="billing-header">
+            <div>
+                <h1>Billing Management</h1>
+                <p>Manage patient bills and payments</p>
+            </div>
+            <a class="create-bill-btn" href="CreateBillServlet">+ Create Bill</a>
+        </header>
+
+        <div id="message" class="message hidden"></div>
+
+        <section class="billing-card">
+            <div class="billing-table-wrapper">
+                <table class="billing-table">
+                    <thead>
+                    <tr>
+                        <th>Bill ID</th>
+                        <th>Appointment</th>
+                        <th>Patient</th>
+                        <th>Dentist</th>
+                        <th>Treatment Charge</th>
+                        <th>Discount</th>
+                        <th>Total</th>
+                        <th>Paid</th>
+                        <th>Balance</th>
+                        <th>Status</th>
+                        <th>Created Date</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody id="billingTableBody">
+                    <tr><td colspan="12" class="no-bills">Loading bills...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</div>
+<script src="js/billing.js"></script>
+    <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>

@@ -1,0 +1,86 @@
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #eef3f8 !important;
+    background-image:
+        linear-gradient(rgba(242, 247, 252, 0.88), rgba(242, 247, 252, 0.88)),
+        url('../images/Background.png') !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+
+.sidebar {
+    width: 240px !important;
+    min-width: 240px !important;
+    max-width: 240px !important;
+    box-sizing: border-box !important;
+}
+
+
+.main,
+.main-content,
+.report-content,
+.billing-content {
+    margin-left: 240px !important;
+    width: calc(100% - 240px) !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Existing page wrappers must not create a second sidebar offset */
+.report-page,
+.billing-page {
+    min-height: 100vh;
+    width: 100%;
+}
+
+
+.main > *,
+.main-content > *,
+.report-content > *,
+.billing-content > * {
+    max-width: 100%;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+@media (max-width: 768px) {
+    body {
+        background-attachment: scroll !important;
+    }
+
+    .sidebar {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: none !important;
+        position: relative !important;
+        height: auto !important;
+        min-height: auto !important;
+    }
+
+    .main,
+    .main-content,
+    .report-content,
+    .billing-content {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 20px !important;
+    }
+}
+
+
+@media print {
+    body {
+        background: #ffffff !important;
+    }
+}
