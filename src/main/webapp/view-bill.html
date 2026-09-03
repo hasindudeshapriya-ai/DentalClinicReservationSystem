@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>View Bill - Dental Clinic</title>
+
+    <link rel="stylesheet" href="css/billing.css">
+    <link rel="stylesheet" href="css/view-bill.css">
+    <link rel="stylesheet" href="css/common-sidebar.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/clinic-background.css">
+</head>
+
+<body>
+
+<div class="billing-page">
+
+<div class="sidebar">
+
+    <h2>🦷 Dental Clinic</h2>
+
+    <a href="dashboard.html">🏠 Dashboard</a>
+    <a href="patients.html">👤 Patients</a>
+    <a href="LoadPatientsServlet">📅 Appointments</a>
+    <a href="dentists.html">🦷 Dentists</a>
+    <a href="BillingServlet" class="active">💳 Billing</a>
+    <a href="report.html">📊 Reports</a>
+    <a href="#">👥 User Management</a>
+    <a href="index.html">🚪 Logout</a>
+
+</div>
+
+    
+    <main class="billing-content">
+
+        <div class="billing-header">
+
+            <div>
+                <h1>View Bill</h1>
+                <p>View complete billing information</p>
+            </div>
+
+            <button id="printBillButton" class="print-bill-btn" type="button" onclick="printCurrentBill()" style="display:none;">🖨 Print Bill</button>
+                        <a href="billing.html" class="create-bill-btn">
+                ← Back to Billing
+            </a>
+
+        </div>
+
+
+        <div class="view-bill-card">
+
+            <div id="loadingMessage">
+                Loading bill details...
+            </div>
+
+            <div id="billContent" style="display:none;">
+
+                <!-- Bill Header -->
+                <div class="bill-top">
+
+                    <div>
+                        <h2>Sunrise Dental Clinic</h2>
+                        <p>Patient Billing Invoice</p>
+                    </div>
+
+                    <div class="bill-number">
+                        <span>Bill ID</span>
+                        <strong id="billId">-</strong>
+                    </div>
+
+                </div>
+
+
+                
+                <div class="information-section">
+
+                    <h3>Appointment Information</h3>
+
+                    <div class="information-grid">
+
+                        <div>
+                            <span>Appointment ID</span>
+                            <strong id="appointmentId">-</strong>
+                        </div>
+
+                        <div>
+                            <span>Patient</span>
+                            <strong id="patientName">-</strong>
+                        </div>
+
+                        <div>
+                            <span>Dentist</span>
+                            <strong id="dentistName">-</strong>
+                        </div>
+
+                        <div>
+                            <span>Created Date</span>
+                            <strong id="createdDate">-</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+               
+                <div class="information-section">
+
+                    <h3>Billing Information</h3>
+
+                    <div class="billing-details">
+
+                        <div class="detail-row">
+                            <span>Treatment Charge</span>
+                            <strong id="treatmentCharge">
+                                Rs. 0.00
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Discount</span>
+                            <strong id="discount">
+                                Rs. 0.00
+                            </strong>
+                        </div>
+
+                        <div class="detail-row total-row">
+                            <span>Total</span>
+                            <strong id="total">
+                                Rs. 0.00
+                            </strong>
+                        </div>
+
+                        <div class="detail-row">
+                            <span>Amount Paid</span>
+                            <strong id="amountPaid">
+                                Rs. 0.00
+                            </strong>
+                        </div>
+
+                        <div class="detail-row balance-row">
+                            <span>Balance</span>
+                            <strong id="balance">
+                                Rs. 0.00
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+               
+                <div class="status-section">
+
+                    <span>Payment Status</span>
+
+                    <span id="statusBadge" class="status status-unpaid">
+                        Unpaid
+                    </span>
+
+                </div>
+
+
+                
+                <div class="bill-actions">
+
+                    <a id="editBillButton"
+                       href="#"
+                       class="btn-primary">
+                        Edit Bill
+                    </a>
+
+                    <a href="billing.html"
+                       class="btn-secondary">
+                        Back
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            
+            <div id="errorMessage"
+                 class="error-message"
+                 style="display:none;">
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="js/view-bill.js"></script>
+
+    <script src="js/sidebar.js"></script>
+    <script src="js/role.js"></script>
+</body>
+</html>
