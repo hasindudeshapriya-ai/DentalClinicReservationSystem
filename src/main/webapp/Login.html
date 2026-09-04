@@ -55,5 +55,25 @@
     <script src="js/login.js"></script>
 
     <script src="js/role.js"></script>
+    
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const error = params.get("error");
+
+    if (error === "invalid") {
+
+        alert("Invalid username or password. Please try again.");
+
+        // Remove error from URL
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+    }
+});
+</script>
 </body>
 </html>
